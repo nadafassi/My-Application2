@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "872953653429",
+    "project_id": "windy-orb-243508",
+    "storage_bucket": "windy-orb-243508.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872953653429:android:994d4b6fade6612f3c36fc",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872953653429-6gg3ed0jatjj6q5bqjs1b5h6gnm2uri9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuq3QDsZ2DGaDACexS6E0BEJS3AymM5DY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872953653429-6gg3ed0jatjj6q5bqjs1b5h6gnm2uri9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
