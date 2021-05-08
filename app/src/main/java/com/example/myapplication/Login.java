@@ -28,12 +28,13 @@ FirebaseAuth mAuth;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mEmail=findViewById(R.id.Email);
-        mPassword=findViewById(R.id.password);
-        progressBar=findViewById(R.id.progressBar);
-        mAuth=FirebaseAuth.getInstance();
-        mLoginBtn=findViewById(R.id.login);
-        mCreateBtn=findViewById(R.id.createText);
+        mEmail = findViewById(R.id.Email);
+        mPassword = findViewById(R.id.password);
+        progressBar = findViewById(R.id.progressBar);
+        mAuth = FirebaseAuth.getInstance();
+        mLoginBtn = findViewById(R.id.login);
+        mCreateBtn = findViewById(R.id.createText);
+
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,35 +45,56 @@ FirebaseAuth mAuth;
                     mEmail.setError("Email is Required.");
                     return;
                 }
+                mCreateBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        register(v);
+
+                    }
+
+
+
+
+                });
                 if (TextUtils.isEmpty(email)) {
                     mPassword.setError("Password is Required.");
                     return;
                 }
-                if(password.length()<6){
+                if (password.length() < 6) {
                     mPassword.setError("Password Must be >= 6 Characters");
                     return;
                 }
-                progressBar.setVisibility(View.VISIBLE);
-                // authenticate the user
-               mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                   @Override
-                   public void onComplete(@NonNull Task<AuthResult> task) {
-                       if(task.isSuccessful()){
-                           Toast.makeText(Login.this,"Logged in Successful",Toast.LENGTH_SHORT).show();
-                           startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                       }else{
-                           Toast.makeText(Login.this,"Error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
 
-                       }
-                   }
-               });
+
+                // authenticate the user
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Login.this, "Logged in Successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        } else {
+                            Toast.makeText(Login.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                           // progressBar.setVisibility(View.GONE);
+                        }
+                    }
+                });
             }
+
         });
-        mCreateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Register.class));
-            }
-        });
+
     }
+
+
+   public void register(View view) {
+       Intent i = new Intent(Login.this, Register.class);
+       startActivity(i);
+
+
+   }
+
+
+
+
 }

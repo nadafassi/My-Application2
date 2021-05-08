@@ -21,16 +21,17 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class Register extends AppCompatActivity {
+public class   Register extends AppCompatActivity {
 EditText mFullName,mEmail,mPassword,mPhone;
 Button mRegisterBtn;
 TextView mLoginBtn;
 
 FirebaseAuth mAuth;
 ProgressBar progressBar;
-
-
+TextView mCreateText;
 
 
     @Override
@@ -45,16 +46,14 @@ ProgressBar progressBar;
         mRegisterBtn=findViewById(R.id.register);
         mLoginBtn=findViewById(R.id.login);
         mAuth=FirebaseAuth.getInstance();
-      progressBar=findViewById(R.id.progressBar);
-      if(mAuth.getCurrentUser()!=null){
-          startActivity(new Intent(getApplicationContext(),MainActivity.class));
-          finish();
-      }
-
-      mRegisterBtn.setOnClickListener(new View.OnClickListener() {
+        progressBar=findViewById(R.id.progressBar);
+        mCreateText=findViewById(R.id.createText);
+        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
 
           @Override
           public void onClick(View v) {
+
+
               String email = mEmail.getText().toString().trim();
               String password = mPassword.getText().toString().trim();
               if (TextUtils.isEmpty(email)) {
@@ -69,29 +68,34 @@ ProgressBar progressBar;
                   mPassword.setError("Password Must be >= 6 Characters");
                   return;
               }
-                progressBar.setVisibility(View.VISIBLE);
+
               //register the use firebase
               mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                   @Override
                   public void onComplete(@NonNull Task<AuthResult> task) {
                       if(task.isSuccessful()){
                           Toast.makeText(Register.this,"User Created",Toast.LENGTH_SHORT).show();
-                          startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                          startActivity(new Intent(getApplicationContext(),Login.class));
                       }else{
                           Toast.makeText(Register.this,"Error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                       progressBar.setVisibility(View.GONE);
+
                       }
                   }
               });
 
+
+              
+
           }
 
       });
-        mLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Login.class));
-            }
-        });
+
+    }
+
+    public void login(View view) {
+        Intent i = new Intent(Register.this, Login.class);
+        startActivity(i);
+
     }
 }
+

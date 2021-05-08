@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">My Application</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="strPoidIdeal">PoidIdeal:</string>
+    <string name="comm1">dénutrition</string>
+    <string name="comm2">Maigreur</string>
+    <string name="comm3">poids normal</string>
+    <string name="comm4">Surpoids</string>
 </resources>

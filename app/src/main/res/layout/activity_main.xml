@@ -4,31 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+  android:background="@drawable/im8"
 
-    <TextView
-        android:id="@+id/textView3"
-        :layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to Dashboard"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.431" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="InvalidId">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="logout"
-        android:text="Logout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/call_fragment2"
+            android:layout_width="186dp"
+            android:layout_height="wrap_content"
+            android:onClick="this"
+            android:text="Planing"
+            tools:ignore="OnClick" />
 
+        <Button
+            android:id="@+id/call_fragment"
+
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:onClick="this"
+            android:text="Test IMC"
+            tools:ignore="OnClick" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
